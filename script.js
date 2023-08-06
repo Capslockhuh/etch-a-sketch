@@ -9,9 +9,11 @@ function generateGrid() {
   for (let i = 1; i <= squareAmount * squareAmount; i++) {
     gridSquare = document.createElement("div");
     gridSquare.classList.add("item");
+
     gridSquare.style.flexBasis = calcFlexBasis();
     gridContainer.appendChild(gridSquare);
   }
+  addDrawEffect();
 }
 
 function changeGrid() {
@@ -33,11 +35,22 @@ function clearGrid () {
   }
 }
 
+/* flex-basis of one grid item is calculated by dividing the container size (800 px) by the square amount (deafult is 16)
+(deafult flex-basis is equal to 50px) */
 function calcFlexBasis() {
   let basis = 800 / squareAmount;
   String(basis);
   let result = basis + "px";
   return result;
+}
+
+function addDrawEffect() {
+  let gridSquares = document.querySelectorAll(".item");
+  for (let i = 0; i < gridSquares.length; i++) {
+    gridSquares[i].addEventListener("mouseover", function () {
+      gridSquares[i].style.backgroundColor = "blue";
+    })
+  }
 }
 
 generateGrid();

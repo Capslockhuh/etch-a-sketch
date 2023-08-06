@@ -11,7 +11,7 @@
   
   .item {
     box-sizing: border-box;
-    border: 1px solid lightgray;
+    /*border: 1px solid lightgray;*/
     flex-grow: 1;
     flex-basis: 50px;
   }
