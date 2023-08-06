@@ -12,12 +12,14 @@
   .item {
     box-sizing: border-box;
     border: 1px solid lightgray;
-    flex: 1 12.5px;
+    flex-grow: 1;
+    flex-basis: 50px;
   }
-  
-  /*.container>div:nth-child(16n + 1) {
-    width: 100%;
-    border: 0;
-    height: 0;
-  }*/
+
+  #size-button {
+    text-align: center;
+    background-color: beige;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
   
