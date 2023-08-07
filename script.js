@@ -48,9 +48,13 @@ function addDrawEffect() {
   let gridSquares = document.querySelectorAll(".item");
   for (let i = 0; i < gridSquares.length; i++) {
     gridSquares[i].addEventListener("mouseover", function () {
-      gridSquares[i].style.backgroundColor = "blue";
+      gridSquares[i].style.backgroundColor = changeColor("black");
     })
   }
+}
+
+function changeColor(color) {
+  return color;
 }
 
 generateGrid();

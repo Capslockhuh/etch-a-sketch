@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>grid test</title>
+    <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container"></div>
-    <button id="size-button">Change grid size</button>
+    <div id="content">
+       <div class="vertical-order">
+        <p id="title">Etch-a-Sketch</p>
+        <div class="menu">
+            <p class="subtitle">Pen Colors</p>
+            <button id="black-btn" class="button">black</button>
+            <button id="red-btn" class="button">red</button>
+            <button id="green-btn" class="button">green</button>
+            <button id="blue-btn" class="button">blue</button>
+            <button id="random-btn" class="button">random</button>
+            <button id="eraser" class="button">eraser</button>
+        </div>
+       </div>
+        <div class="container"></div>
+    </div>
 </body>
 </html>
