@@ -1,6 +1,8 @@
-const gridContainer = document.querySelector('.container');
-const gridSizeBtn = document.querySelector("#size-button");
+const gridContainer = document.querySelector(".container");
+const gridSizeBtn = document.querySelector("#size-btn");
 gridSizeBtn.addEventListener("click", changeGrid);
+const clearGridBtn = document.querySelector("#clear-btn");
+clearGridBtn.addEventListener("click", clearGrid);
 
 let gridSquare;
 let squareAmount = 16;
@@ -23,7 +25,10 @@ function changeGrid() {
   if (squareAmount === null || squareAmount === NaN || typeof squareAmount != "number") {
     return;
   } else {
-    clearGrid();
+    // I'm not using the clearGrid() function here, to avoid doubling of grid cells
+    while ( gridContainer.hasChildNodes() ) {
+      gridContainer.removeChild(gridContainer.firstChild);
+    }
     generateGrid();
   }
 }
@@ -33,6 +38,8 @@ function clearGrid () {
   while ( gridContainer.hasChildNodes() ) {
     gridContainer.removeChild(gridContainer.firstChild);
   }
+  generateGrid(); 
+  // Remove all the previous elements and generate new ones
 }
 
 /* flex-basis of one grid item is calculated by dividing the container size (800 px) by the square amount (deafult is 16)
@@ -47,11 +54,14 @@ function calcFlexBasis() {
 function addDrawEffect() {
   let gridSquares = document.querySelectorAll(".item");
   for (let i = 0; i < gridSquares.length; i++) {
+    console.log(gridSquares.length); // debugging
     gridSquares[i].addEventListener("mouseover", function () {
       gridSquares[i].style.backgroundColor = changeColor("black");
     })
   }
 }
+
+
 
 function changeColor(color) {
   return color;

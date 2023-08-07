@@ -12,6 +12,11 @@
     flex-direction: column;
   }
 
+  .horizontal-order {
+    display: flex;
+    gap: 48px;
+  }
+
   #title {
     color: #1F2987;
     font-family: Gill Sans;
@@ -85,7 +90,10 @@
   
   .item {
     box-sizing: border-box;
-    /*border: 1px solid lightgray;*/
     flex-grow: 1;
     flex-basis: 50px; /* deafult square size for a 16x16 grid, calculating process for other grid sizes is explained in script.js */
+  }
+
+  .item-border {
+    border: 1px solid lightgray;
   }
