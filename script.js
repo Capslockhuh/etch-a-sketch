@@ -6,6 +6,21 @@ clearGridBtn.addEventListener("click", clearGrid);
 
 let gridSquare;
 let squareAmount = 16;
+let currentColor = "#000000"
+
+// Color buttons
+const blackBtn = document.querySelector("#black-btn");
+blackBtn.addEventListener("click", () => {currentColor = "#000000"});
+const redBtn = document.querySelector("#red-btn");
+redBtn.addEventListener("click", () => {currentColor = "#FF6666"});
+const greenBtn = document.querySelector("#green-btn");
+greenBtn.addEventListener("click", () => {currentColor = "#66CC66"});
+const blueBtn = document.querySelector("#blue-btn");
+blueBtn.addEventListener("click", () => {currentColor = "#99CCC8"});
+//random btn
+const eraser = document.querySelector("#eraser");
+eraser.addEventListener("click", () => {currentColor = "eraser"});
+
 
 function generateGrid() {
   for (let i = 1; i <= squareAmount * squareAmount; i++) {
@@ -56,15 +71,17 @@ function addDrawEffect() {
   for (let i = 0; i < gridSquares.length; i++) {
     console.log(gridSquares.length); // debugging
     gridSquares[i].addEventListener("mouseover", function () {
-      gridSquares[i].style.backgroundColor = changeColor("black");
+      if (gridSquares[i].style.backgroundColor && currentColor === "eraser") {
+        gridSquares[i].style.backgroundColor = "";
+      } else if (!(gridSquares[i].style.backgroundColor)){
+        gridSquares[i].style.backgroundColor = currentColor;
+      }
     })
   }
 }
 
-
-
-function changeColor(color) {
-  return color;
+function changeColor(e) {
+  return e.currentTarget.parameter;
 }
 
 generateGrid();
