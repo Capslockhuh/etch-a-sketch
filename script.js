@@ -3,6 +3,12 @@ const gridSizeBtn = document.querySelector("#size-btn");
 gridSizeBtn.addEventListener("click", changeGrid);
 const clearGridBtn = document.querySelector("#clear-btn");
 clearGridBtn.addEventListener("click", clearGrid);
+const borderBtn = document.querySelector("#borders-btn");
+borderBtn.addEventListener("click", () => {
+  for (let i = 1; i < squareAmount * squareAmount; i++) {
+    gridContainer.childNodes[i].classList.toggle("item-border");
+  }
+})
 
 let gridSquare;
 let squareAmount = 16;
