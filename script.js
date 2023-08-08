@@ -19,7 +19,8 @@ const greenBtn = document.querySelector("#green-btn");
 greenBtn.addEventListener("click", () => {currentColor = "#66CC66"});
 const blueBtn = document.querySelector("#blue-btn");
 blueBtn.addEventListener("click", () => {currentColor = "#99CCC8"});
-//random btn
+const randomBtn = document.querySelector("#random-btn");
+randomBtn.addEventListener("click", randomColor);
 const eraser = document.querySelector("#eraser");
 eraser.addEventListener("click", () => {currentColor = "eraser"});
 
@@ -78,8 +79,13 @@ function addDrawEffect() {
     gridSquares[i].addEventListener("mouseover", function () {
       if (gridSquares[i].style.backgroundColor && currentColor === "eraser") {
         gridSquares[i].style.backgroundColor = "";
+      } else if (currentColor != "#000000" && currentColor != "#FF6666" && currentColor != "#66CC66" && currentColor != "#99CCC8" && currentColor != "eraser" && !(gridSquares[i].style.backgroundColor)) {
+        // if the selected color is random and the hovered on grid cell is empty, change it to the random color and generate a new one
+        gridSquares[i].style.backgroundColor = currentColor;
+        randomColor();
       } else if (!(gridSquares[i].style.backgroundColor)){
         gridSquares[i].style.backgroundColor = currentColor;
+        console.log(currentColor);
       }
     })
   }
@@ -89,6 +95,11 @@ function toggleBorders() {
   for (let i = 1; i < squareAmount * squareAmount; i++) {
     gridContainer.childNodes[i].classList.toggle("item-border");
   }
+}
+
+function randomColor() {
+  let randomColor = Math.floor(Math.random()*16777215).toString(16);
+  currentColor = "#" + randomColor;
 }
 
 generateGrid();
