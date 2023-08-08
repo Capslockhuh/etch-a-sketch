@@ -4,11 +4,7 @@ gridSizeBtn.addEventListener("click", changeGrid);
 const clearGridBtn = document.querySelector("#clear-btn");
 clearGridBtn.addEventListener("click", clearGrid);
 const borderBtn = document.querySelector("#borders-btn");
-borderBtn.addEventListener("click", () => {
-  for (let i = 1; i < squareAmount * squareAmount; i++) {
-    gridContainer.childNodes[i].classList.toggle("item-border");
-  }
-})
+borderBtn.addEventListener("click", toggleBorders);
 
 let gridSquare;
 let squareAmount = 16;
@@ -40,11 +36,14 @@ function generateGrid() {
 }
 
 function changeGrid() {
-  let input = prompt("Enter the amount of squares you'd like your grid's side to have (e.g. 64)")
+  let input = prompt("Enter the amount of squares you'd like your grid's side to have\n(min. 8 max. 200)")
   squareAmount = Math.floor(input)
   // Return if invalid input
   if (squareAmount === null || squareAmount === NaN || typeof squareAmount != "number") {
     return;
+  } else if (squareAmount < 8 || squareAmount > 200) {
+    squareAmount = 16;
+    clearGrid();
   } else {
     // I'm not using the clearGrid() function here, to avoid doubling of grid cells
     while ( gridContainer.hasChildNodes() ) {
@@ -86,8 +85,10 @@ function addDrawEffect() {
   }
 }
 
-function changeColor(e) {
-  return e.currentTarget.parameter;
+function toggleBorders() {
+  for (let i = 1; i < squareAmount * squareAmount; i++) {
+    gridContainer.childNodes[i].classList.toggle("item-border");
+  }
 }
 
 generateGrid();
