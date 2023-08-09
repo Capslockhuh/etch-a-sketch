@@ -24,6 +24,17 @@ randomBtn.addEventListener("click", randomColor);
 const eraser = document.querySelector("#eraser");
 eraser.addEventListener("click", () => {currentColor = "eraser"});
 
+// Themes
+const themeBtn =  document.querySelector("#theme-btn");
+const theme = document.querySelector("#theme-link");
+themeBtn.addEventListener("click", () => {
+  if (theme.getAttribute("href") == "stylesheets/styles.css") {
+    theme.href = "stylesheets/dark-mode-styles.css";
+  } else {
+    theme.href = "stylesheets/styles.css";
+  }
+})
+
 
 function generateGrid() {
   for (let i = 1; i <= squareAmount * squareAmount; i++) {
