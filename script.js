@@ -28,10 +28,10 @@ eraser.addEventListener("click", () => {currentColor = "eraser"});
 const themeBtn =  document.querySelector("#theme-btn");
 const theme = document.querySelector("#theme-link");
 themeBtn.addEventListener("click", () => {
-  if (theme.getAttribute("href") == "stylesheets/styles.css") {
-    theme.href = "stylesheets/dark-mode-styles.css";
+  if (theme.getAttribute("href") == "styles.css") {
+    theme.href = "dark-mode-styles.css";
   } else {
-    theme.href = "stylesheets/styles.css";
+    theme.href = "styles.css";
   }
 })
 
